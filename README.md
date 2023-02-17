@@ -12,6 +12,9 @@ The project's core components are:
 
 * Blocklist Engine. Initially the project had a self-hosted BlockTogether instance but following that project being shuttered maintaining the instance was too challenging for our contributors. The blocklist is now hosted on a thid-party blocktogether instance which is well maintained. The blocklist hits generated from elasticsearch are dumped to a CSV of UUIDs which is then manually imported on a near daily basis to the twitter account linked to the blocktogether instance with the chrome RedBlock plugin. This limits daily blocks to around 500 accounts at present, but as this is below the number blocks typically generated over a day this has not caused an issue so far.
 
+
+![alt text](https://github.com/shadowblocker/twitter-scraper/raw/main/readme/kibana-discover-brexit.png "Kibana view of twitter metadata from pro-brexit accounts")
+
 # History
 
 At first the crawlers searched twitter trending topics for high volumes of tweets with similar or identical content, in order to identify spammers and disinformation copypasta accounts. The UUIDs of accounts found likely to be inauthentic or engaging in these behaviours were then passed to the blocktogether instance, where twitter users could subscribe to the automatically generated public blocklist which auto-blocks the flagged accounts on their behalf with no interaction beyond the initial blocktogether setup.
