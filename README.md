@@ -46,9 +46,10 @@ As the scripts run, they will output the information to an elasticsearch instanc
 
 * Hashivault
 * Python 3.10+
-* ElasticSearch
-* Kibana
 * SNSCRAPE
+* ElasticSearch
+* Kibana (optional)
+* Hashivault (optional)
 
 # CONFIGURATION
 
