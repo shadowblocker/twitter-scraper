@@ -27,24 +27,30 @@ As the efficacy of the collection methodology rightly attracts and deserves scru
 Shadowblocker makes use of input list files. These are simple txt files which can be edited by anyone with a basic level of technical skill. The crawler scripts will recursively iterate through each line of the text files. The crawler scripts can also be invoked manually and run directly from bash.
 
 ### USERIDS
-A text file with line seperated twitter account UUIDs (a blank line should be left at the end). Makes use of the userid.py crawler-script.
+
+⋅⋅⋅A text file with line seperated twitter account UUIDs (a blank line should be left at the end). Makes use of the userid.py crawler-script.
 
 ### USERS
-A text file with line seperated twitter account Usernames (a blank line should be left at the end). Makes use of the username.py crawler-script.
+
+⋅⋅⋅A text file with line seperated twitter account Usernames (a blank line should be left at the end). Makes use of the username.py crawler-script.
 
 ### SEARCH
-A text file with line seperated search terms, equivalent the a keyword search (a blank line should be left at the end). Makes use of the search.py crawler-script.
+
+⋅⋅⋅A text file with line seperated search terms, equivalent the a keyword search (a blank line should be left at the end). Makes use of the search.py crawler-script.
 
 ### CASHTAGS
-A text file with line seperated twitter cashtags (a blank line should be left at the end). Makes use of the hashtag.py crawler-script. Cashtag crawling was added in 2022 in response to a wave of NFT/crypto scams
+
+⋅⋅⋅A text file with line seperated twitter cashtags (a blank line should be left at the end). Makes use of the hashtag.py crawler-script. Cashtag crawling was added in 2022 in response to a wave of NFT/crypto scams
 
 ### HASHTAGS
-A text file with line seperated twitter hashtags (a blank line should be left at the end). Makes use of the hashtag.py crawler-script.
+
+⋅⋅⋅A text file with line seperated twitter hashtags (a blank line should be left at the end). Makes use of the hashtag.py crawler-script.
 
 ### ADVANCEDSEARCH
-A text file with line seperated advanced twitter search parameters (a blank line should be left at the end). Makes use of the advsearch.py crawler-script.
 
-As the scripts run, they will parse the information to an elasticsearch instance. 
+⋅⋅⋅A text file with line seperated advanced twitter search parameters (a blank line should be left at the end). Makes use of the advsearch.py crawler-script.
+
+As the scripts run, they will output the information to an elasticsearch instance. 
 
 # Dependencies.
 
