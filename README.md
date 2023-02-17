@@ -38,7 +38,7 @@ Shadowblocker makes use of input list files. These are simple txt files which ca
 * SEARCH - A text file with line seperated search terms, equivalent the a keyword search (a blank line should be left at the end). Makes use of the search.py crawler-script.
 
 * HASHTAGS - A text file with line seperated twitter hashtags (a blank line should be left at the end). Makes use of the hashtag.py crawler-script.
-* 
+
 * CASHTAGS - A text file with line seperated twitter cashtags (a blank line should be left at the end). Makes use of the cashtag.py crawler-script.
 
 * ADVANCEDSEARCH - A text file with line seperated advanced twitter search parameters (a blank line should be left at the end). Makes use of the advsearch.py crawler-script.
