@@ -14,7 +14,7 @@ The project's core components are:
 
 # History
 
-Initially the crawlers searched twitter for high volumes of tweets with similar or identical content, in order to identify spammers and disinformation copypasta accounts. The UUIDs of accounts found likely to be inauthentic or engaging in these behaviours were then passed to the blocktogether instance, where twitter users could subscribe to the automatically generated public blocklist which auto-blocks the flagged accounts on their behalf with no interaction beyond the initial blocktogether setup.
+At first the crawlers searched twitter trending topics for high volumes of tweets with similar or identical content, in order to identify spammers and disinformation copypasta accounts. The UUIDs of accounts found likely to be inauthentic or engaging in these behaviours were then passed to the blocktogether instance, where twitter users could subscribe to the automatically generated public blocklist which auto-blocks the flagged accounts on their behalf with no interaction beyond the initial blocktogether setup.
 
 Initially written fully to use twitter's API, recent changes at Twitter have necessitated branching out to make use of other methods of gathering the metadata required, should twitter pull the plug on free API accounts. 
 
