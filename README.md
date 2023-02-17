@@ -22,13 +22,6 @@ To ensure that the crawlers do not stop working if the API access situation chan
 
 As the efficacy of the collection methodology rightly attracts and deserves scrutiny, the decision has been taken to publicly post the API-less collection crawlers here on GitHub. This may also be of assistance to anybody wishing to use a similar model for scraping tweets without the API.
 
-# Dependencies (crawlers only)
-
-python 3.9+
-elasticsearch helpers
-snscrape 0.5+
-twint-zero
-
 # Usage
 
 Shadowblocker makes use of input list files. These are simple txt files which can be edited by anyone with a basic level of technical skill. The crawler scripts will recursively iterate through each line of the text files. The crawler scripts can also be invoked manually and run directly from bash.
@@ -55,11 +48,11 @@ As the scripts run, they will parse the information to an elasticsearch instance
 
 # Dependencies.
 
-Hashivault.
-ElasticSearch.
-Kibana.
-SNSCRAPE.
-twint-zero.
+* Hashivault
+* Python 3.10+
+* ElasticSearch
+* Kibana
+* SNSCRAPE
 
 # CONFIGURATION
 
