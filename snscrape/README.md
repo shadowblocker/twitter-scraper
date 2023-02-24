@@ -22,7 +22,7 @@ invoked from shell (requires 2 arguments): python3 fastuser.py USERNAME ELASTICT
 
 * e.g. python3 fastuser.py fesshole comedy
 
-This would scrape limited bio metadata from up to 5 of the most recent tweets sent by the account @Fesshole and add the elasticseach tag "comedy" to all results. Designed to execute rapidly for fast user-bio collection tasks which don't require many tweets.
+This would scrape limited bio metadata from up to 5 of the most recent tweets sent by the account @Fesshole and add the elasticseach tag "comedy" to all results. Designed to execute rapidly for fast user-bio collection tasks where tweet metadata is less useful than user metadata.
 
 ## Crawling Hashtags and Cashtags
 
