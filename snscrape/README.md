@@ -1,6 +1,6 @@
 ## Crawling User accounts
 
-### Usernames
+### USER.PY - Usernames
 
 invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG COUNT
 
@@ -8,7 +8,7 @@ invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG C
 
 This would scrape metadata from up to 50,000 of the most recent tweets sent by the account @BBCNews and add the elasticseach tag "broadcasters" to all results.
 
-### UserIDs
+### USERID.PY - UserIDs
 
 invoked from shell (requires 3 arguments): python3 user.py USERID ELASTICTAG COUNT
 
@@ -16,7 +16,7 @@ invoked from shell (requires 3 arguments): python3 user.py USERID ELASTICTAG COU
 
 This would scrape metadata from up to 750 of the most recent tweets sent by the user_id 252521025 (@Number10cat) and add the elasticseach tag "global-influencers" to all results.
 
-### FastUser
+### FASTUSER.PY - FastUser
 
 invoked from shell (requires 2 arguments): python3 fastuser.py USERNAME ELASTICTAG
 
@@ -26,7 +26,7 @@ This would scrape limited bio metadata from up to 5 of the most recent tweets se
 
 ## Crawling Hashtags and Cashtags
 
-### Hashtags
+### HASHTAG.PY - Hashtags
 
 invoked from shell (requires 3 arguments): python3 hashtag.py HASHTAG ELASTICTAG COUNT
 
@@ -34,7 +34,7 @@ invoked from shell (requires 3 arguments): python3 hashtag.py HASHTAG ELASTICTAG
 
 This would scrape basic metadata from up to 150,000 tweets containing the hashtag #BlackFriday and add the elasticseach tag "blackfriday" to all results.
 
-### Cashtags
+### CASHTAG.PY - Cashtags
 
 invoked from shell (requires 3 arguments): python3 cashtag.py CASHTAG ELASTICTAG COUNT
 
@@ -45,7 +45,7 @@ This would scrape basic metadata from up to 1000 tweets containing the cashtag $
 
 ## Crawling keywords and phrases from within tweets
 
-### Search
+### SEARCH.PY - Search
 
 invoked from shell (requires 3 arguments): python3 search.py SEARCHTERM ELASTICTAG COUNT
 
@@ -53,7 +53,7 @@ invoked from shell (requires 3 arguments): python3 search.py SEARCHTERM ELASTICT
 
 This would scrape basic metadata from up to 500 tweets containing the words "Christmas Day" posted since December 25th 2022, and add the elasticseach tag "Christmas" to all results.
 
-### Advanced Search
+### ADVSEARCH.PY - Advanced Search
 
 invoked from shell (requires 3 arguments): python3 advsearch.py SEARCHTERM ELASTICTAG COUNT
 
