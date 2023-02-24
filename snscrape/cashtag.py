@@ -10,21 +10,21 @@ client = Elasticsearch("http://elastic-ip:elastic-port/", basic_auth=('elastic-u
 
 #take the incoming arguments and define them as variables to use in the crawl
 
-twitsearch = sys.argv[1]                                              # ingest single search term from incoming args
-twitessid = sys.argv[2]                                               # ingest elasticsearch tag (essid) from incoming args
-twitcount = sys.argv[3]                                               # ingest number of tweets to crawl from incoming args
+twitcash = sys.argv[1]                                              # ingest cashtag to crawl from incoming args
+twitessid = sys.argv[2]                                             # ingest elasticsearch tag (essid) from incoming args
+twitcount = sys.argv[3]                                             # ingest number of tweets to crawl from incoming args
 
 #print output to show basic summary of the requested crawl
-print ("Crawling", twitcount, "tweets containing search terms", twitsearch, "tagged with", twitessid)
+print ("Crawling", twitcount, "tweets containing cashtag", twitcash, "tagged with", twitessid)
 
 class Twitter_Elasticsearch():
     def __init__(self) -> None:
         pass
 
-    def tweet_to_elasticsearch_bulk_insert(self, keyword=twitsearch):
+    def tweet_to_elasticsearch_bulk_insert(self, cashtag=twitcash):
         maxTweets = int(twitcount)
         tweets_1k = []
-        for i, tweet in enumerate(twitter.TwitterSearchScraper(keyword).get_items()):
+        for i, tweet in enumerate(twitter.TwitterSearchScraper(cashtag).get_items()):
             if i > maxTweets:  break
             tweets = {
                 "_index": 'elasticsearch-indexname',                    # elasticsearch custom index for snscrape
@@ -37,19 +37,16 @@ class Twitter_Elasticsearch():
                 "nlikes" : tweet.likeCount,                             # number of likes
                 "nreplies" : tweet.replyCount,                          # number of replies
                 "nretweets" : tweet.retweetCount,                       # number of retweets
+                "nquotes" : tweet.quoteCount,                           # number of quotes
                 "user_id_str" : tweet.user.id,                          # user id string
                 "user_id_label" : tweet.user.label,                     # user account label
                 "username" : tweet.user.username,                       # twitter account username
-                "bio" : tweet.user.renderedDescription,                 # twitter account bio
                 "tweet" : tweet.rawContent,                             # the contents of the tweet
                 "hashtags" : tweet.hashtags,                            # hashtags from the collected tweet
-                "cashtags" : tweet.cashtags,                            # cashtags from the collected tweet
-                "place" : tweet.user.location,                          # the stated location of the user account
+                "cashtags" : tweet.cashtags,                            # cashtags from the collected tweet                
+                "source" : tweet.source,                                # source identifier
                 "verified" : tweet.user.verified,                       # verification state of the account
                 "age" : tweet.user.created,                             # creation date of twitter account
-			    "nfollowers": tweet.user.followersCount,                # number of followers
-			    "nfollowing" : tweet.user.friendsCount,                 # number of following
-			    "ntweets" : tweet.user.statusesCount,                   # number of tweets
 			    "protected" : tweet.user.protected                      # is account protected
             }
             tweets_1k.append(tweets)

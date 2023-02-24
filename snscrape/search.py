@@ -15,7 +15,7 @@ twitessid = sys.argv[2]                                               # ingest e
 twitcount = sys.argv[3]                                               # ingest number of tweets to crawl from incoming args
 
 #print output to show basic summary of the requested crawl
-print ("Crawling", twitcount, "tweets containing search terms", twitsearch, "tagged with", twitessid)
+print ("Crawling", twitcount, "tweets containing keyword or phrase", twitsearch, "tagged with", twitessid)
 
 class Twitter_Elasticsearch():
     def __init__(self) -> None:
@@ -38,19 +38,13 @@ class Twitter_Elasticsearch():
                 "nreplies" : tweet.replyCount,                          # number of replies
                 "nretweets" : tweet.retweetCount,                       # number of retweets
                 "user_id_str" : tweet.user.id,                          # user id string
-                "user_id_label" : tweet.user.label,                     # user account label
                 "username" : tweet.user.username,                       # twitter account username
-                "bio" : tweet.user.renderedDescription,                 # twitter account bio
                 "tweet" : tweet.rawContent,                             # the contents of the tweet
                 "hashtags" : tweet.hashtags,                            # hashtags from the collected tweet
                 "cashtags" : tweet.cashtags,                            # cashtags from the collected tweet
-                "place" : tweet.user.location,                          # the stated location of the user account
                 "verified" : tweet.user.verified,                       # verification state of the account
                 "age" : tweet.user.created,                             # creation date of twitter account
-			    "nfollowers": tweet.user.followersCount,                # number of followers
-			    "nfollowing" : tweet.user.friendsCount,                 # number of following
-			    "ntweets" : tweet.user.statusesCount,                   # number of tweets
-			    "protected" : tweet.user.protected                      # is account protected
+			    "ntweets" : tweet.user.statusesCount                    # number of tweets
             }
             tweets_1k.append(tweets)
             if i % 500 == 0 :

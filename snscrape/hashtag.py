@@ -15,7 +15,7 @@ twitessid = sys.argv[2]                                             # ingest ela
 twitcount = sys.argv[3]                                             # ingest number of tweets to crawl from incoming args
 
 #print output to show basic summary of the requested crawl
-print ("Searching for", twitcount, "tweets containing hashtag", twithash, "to", twitessid)
+print ("Crawling", twitcount, "tweets containing hashtag", twithash, "tagged with", twitessid)
 
 class Twitter_Elasticsearch():
     def __init__(self) -> None:

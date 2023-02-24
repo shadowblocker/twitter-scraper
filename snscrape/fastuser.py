@@ -10,12 +10,12 @@ client = Elasticsearch("http://elastic-ip:elastic-port/", basic_auth=('elastic-u
 
 #take the incoming arguments and define them as variables to use in the crawl
 
-twituser = sys.argv[1]                                              #ingest account username from incoming args
-twitessid = sys.argv[2]                                             #ingest elasticsearch tag (essid) from incoming args
-twitcount = 5                                                       #sets max number of tweets to search, recommend 5 max for fastuser.py
+twituser = sys.argv[1]                                              # ingest account username from incoming args
+twitessid = sys.argv[2]                                             # ingest elasticsearch tag (essid) from incoming args
+twitcount = 5                                                       # sets max number of tweets to search, recommend 5 max for fastuser.py
 
 #print output to show basic summary of the requested crawl
-print ("Running fast scan for twitter user account", twituser, "to", twitessid)
+print ("Crawling basic profile for user account", twituser, "tagged with", twitessid)
 
 class Twitter_Elasticsearch():
     def __init__(self) -> None:

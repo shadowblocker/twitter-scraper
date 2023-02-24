@@ -10,21 +10,21 @@ client = Elasticsearch("http://elastic-ip:elastic-port/", basic_auth=('elastic-u
 
 #take the incoming arguments and define them as variables to use in the crawl
 
-twitsearch = sys.argv[1]                                              # ingest single search term from incoming args
-twitessid = sys.argv[2]                                               # ingest elasticsearch tag (essid) from incoming args
-twitcount = sys.argv[3]                                               # ingest number of tweets to crawl from incoming args
+twituser = sys.argv[1]                                              # ingest account username from incoming args
+twitessid = sys.argv[2]                                             # ingest elasticsearch tag (essid) from incoming args
+twitcount = sys.argv[3]                                             # ingest number of tweets to crawl from incoming args
 
 #print output to show basic summary of the requested crawl
-print ("Crawling", twitcount, "tweets containing search terms", twitsearch, "tagged with", twitessid)
+print ("Crawling basic profile for user account", twituser, "tagged with", twitessid)
 
 class Twitter_Elasticsearch():
     def __init__(self) -> None:
         pass
 
-    def tweet_to_elasticsearch_bulk_insert(self, keyword=twitsearch):
+    def tweet_to_elasticsearch_bulk_insert(self, username=twituser):
         maxTweets = int(twitcount)
         tweets_1k = []
-        for i, tweet in enumerate(twitter.TwitterSearchScraper(keyword).get_items()):
+        for i, tweet in enumerate(twitter.TwitterUserScraper(username).get_items()):
             if i > maxTweets:  break
             tweets = {
                 "_index": 'elasticsearch-indexname',                    # elasticsearch custom index for snscrape
@@ -50,6 +50,8 @@ class Twitter_Elasticsearch():
 			    "nfollowers": tweet.user.followersCount,                # number of followers
 			    "nfollowing" : tweet.user.friendsCount,                 # number of following
 			    "ntweets" : tweet.user.statusesCount,                   # number of tweets
+			    "photourl" : tweet.user.profileImageUrl,                # profile photo image
+			    "bannerurl" : tweet.user.profileBannerUrl,              # profile banner image
 			    "protected" : tweet.user.protected                      # is account protected
             }
             tweets_1k.append(tweets)
