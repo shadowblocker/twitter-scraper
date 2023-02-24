@@ -10,9 +10,9 @@ This would scrape metadata from up to 50,000 of the most recent tweets sent by t
 
 ### USERID.PY - UserIDs
 
-invoked from shell (requires 3 arguments): python3 user.py USERID ELASTICTAG COUNT
+invoked from shell (requires 3 arguments): python3 userid.py USERID ELASTICTAG COUNT
 
-* e.g. python3 user.py 252521025 global-influencers 750
+* e.g. python3 userid.py 252521025 global-influencers 750
 
 This would scrape metadata from up to 750 of the most recent tweets sent by the user_id 252521025 (@Number10cat) and add the elasticseach tag "global-influencers" to all results.
 
