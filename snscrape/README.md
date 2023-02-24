@@ -6,7 +6,7 @@ invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG C
 
 * e.g. python3 user.py bbcnews broadcasters 50000
 
-This would scrape basic metadata from up to 50,000 of the most recent tweets sent by the account @BBCNews and add the elasticseach tag "broadcasters" to all results.
+This would scrape metadata from up to 50,000 of the most recent tweets sent by the account @BBCNews and add the elasticseach tag "broadcasters" to all results.
 
 ### UserIDs
 
@@ -14,9 +14,15 @@ invoked from shell (requires 3 arguments): python3 user.py USERID ELASTICTAG COU
 
 * e.g. python3 user.py 252521025 global-influencers 750
 
-This would scrape basic metadata from up to 750 of the most recent tweets sent by the user_id 252521025 (@Number10cat) and add the elasticseach tag "global-influencers" to all results.
+This would scrape metadata from up to 750 of the most recent tweets sent by the user_id 252521025 (@Number10cat) and add the elasticseach tag "global-influencers" to all results.
 
 ### FastUser
+
+invoked from shell (requires 2 arguments): python3 fastuser.py USERNAME ELASTICTAG
+
+* e.g. python3 fastuser.py fesshole comedy
+
+This would scrape limited bio metadata from up to 5 of the most recent tweets sent by the account @Fesshole and add the elasticseach tag "comedy" to all results. Designed to execute rapidly for fast user-bio collection tasks which don't require many tweets.
 
 ## Crawling Hashtags and Cashtags
 
