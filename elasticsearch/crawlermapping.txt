@@ -1,0 +1,143 @@
+#elasticsearch index mapping for crawlers
+
+{
+  "mappings": {
+    "properties": {
+      "age": {
+        "type": "date"
+      },
+      "bannerurl": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "bio": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "cashtags": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "conversation_id": {
+        "type": "text"
+      },
+      "created_at": {
+        "type": "date"
+      },
+      "essid": {
+        "type": "text",
+      },
+      "hashtags": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "link": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "nfollowers": {
+        "type": "long"
+      },
+      "nfollowing": {
+        "type": "long"
+      },
+      "nlikes": {
+        "type": "long"
+      },
+      "nquotes": {
+        "type": "long"
+      },
+      "nreplies": {
+        "type": "long"
+      },
+      "nretweets": {
+        "type": "long"
+      },
+      "ntweets": {
+        "type": "long"
+      },
+      "photourl": {
+        "type": "text"
+      },
+      "place": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "protected": {
+        "type": "boolean"
+      },
+      "source": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "tweet": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "user_id_str": {
+        "type": "text"
+      },
+      "username": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "verified": {
+        "type": "boolean"
+      },
+      "subscribed": {
+        "type": "boolean"
+      }
+    }
+  }
+}
