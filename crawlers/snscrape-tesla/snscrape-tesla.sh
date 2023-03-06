@@ -1,30 +1,38 @@
 #!/bin/bash
 # A script the run a rapid hourly crawl of accounts of interest by user-id.
+# Remember to set execution permissions for the template to avoid having to do manually for each crawler "sudo chmod +x snscrape-template.sh". 
 
 #   ShadowBlocker VARIABLES
-#   Here we set the basic params we want the crawler to use
+#   Here we set the basic internal parameters we want the crawler to use
 
-prefix="snscrape-"
-crawler="tesla"
-crawlessid=""$prefix""$crawler""
-crawlhashtaglimit="500"
-crawlsearchlimit="500"
-crawluserlimit="100"
-crawlhashtag="python3 ~/twitter-scraper/snscrape/hashtag.py"
-crawlsearch="python3 ~/twitter-scraper/snscrape/search.py"          # substitute for advsearch.py for slower but more detailed crawls
-crawluser="python3 ~/twitter-scraper/snscrape/user.py"              # substitute for fastuser.py for quicker but less detailed crawls
-crawluserid="python3 ~/twitter-scraper/snscrape/hashtag.py"
+prefix="snscrape-"                                                  # allows user to differentiate between snscrape or tweepy based crawls 
+crawler="tesla"                                                     # a friendly name for the crawler
+crawlessid=""$prefix""$crawler""                                    # creates the elasticsearch tag by combining prefix and crawler fields
+crawlhashtaglimit="500"                                             # how many tweets from each listed hashtag to search for
+crawlcashtaglimit="500"                                             # how many tweets from each listed cashtag to search for
+crawlsearchlimit="500"                                              # how many tweets from each listed search string to look for
+crawluserlimit="100"                                                # how many of each user's tweets to search for
 
-#   GENERAL CONFIG
-#   This section should autopopulate from the vars above and shouldn't need to be touched.
+#   DIRECTORY AND SCRIPT LOCATIONS
+#   Providing repo is cloned directly to user home folder these shouldn't need to be changed
 
-directory="~/twitter-scraper/crawlers/"$prefix""$crawler"/"
-userfile=""$directory"user-"$crawler".txt"
-useridfile=""$directory"userid-"$crawler".txt"
-searchfile=""$directory"search-"$crawler".txt"
-hashtagfile=""$directory"hashtag-"$crawler".txt"
-cashtagfile=""$directory"cashtag-"$crawler".txt"
-logfile="~/twitter-scraper/crawlers/logs/"$prefix""$crawler".log"
+crawlhashtag="python3 $HOME/twitter-scraper/snscrape/hashtag.py"
+crawlsearch="python3 $HOME/twitter-scraper/snscrape/search.py"          # substitute for advsearch.py for slower but more detailed crawls
+crawluser="python3 $HOME/twitter-scraper/snscrape/user.py"              # substitute for fastuser.py for quicker but less detailed crawls
+crawluserid="python3 $HOME/twitter-scraper/snscrape/hashtag.py"
+crawlerpath="$HOME/twitter-scraper/crawlers/"
+logpath="$HOME/twitter-scraper/crawlers/logs/"
+
+userfile=""$crawlerpath""$prefix""$crawler"/user-"$crawler".txt"
+useridfile=""$crawlerpath""$prefix""$crawler"/userid-"$crawler".txt"
+searchfile=""$crawlerpath""$prefix""$crawler"/search-"$crawler".txt"
+hashtagfile=""$crawlerpath""$prefix""$crawler"/hashtag-"$crawler".txt"
+cashtagfile=""$crawlerpath""$prefix""$crawler"/cashtag-"$crawler".txt"
+logfile=""$logpath""$prefix""$crawler".log"
+
+#   DATE CONFIG
+#   Allows you to set some search limiters based on tweets sent since today or sent yesterday.
+
 today=$(date +"%Y-%m-%d")
 yesterday=$(date -d "yesterday" +%Y-%m-%d)
 
@@ -69,11 +77,21 @@ done < $searchfile
 
 while read line; do
 echo -e ""$counter" - "$crawlessid" - hashtag: "${line:0}" since: "$today""
-$crawlhashtag "${line:0} since:$today" $crawlessid $crawlhashtaglimit >/dev/null >> $logfile
+$crawlhashtag "${line:1} since:$yesterday" $crawlessid $crawlhashtaglimit >/dev/null >> $logfile
 let "count=count+1"
 counter=$(printf %06d $count)
 sleep 1
 done < $hashtagfile
+
+##### ##### ##### Crawl for tweets containing cashtags 
+
+while read line; do
+echo -e ""$counter" - "$crawlessid" - search: "${line:0}" since: "$today""
+$crawlsearch "${line:0} since:$yesterday" $crawlessid $crawlsearchlimit # >/dev/null >> $logfile
+let "count=count+1"
+counter=$(printf %06d $count)
+sleep 1
+done < $cashtagfile
 
 ##### ##### ##### Crawl a list of accounts by twitter account USERNAME
 
