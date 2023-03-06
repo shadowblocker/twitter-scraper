@@ -12,7 +12,7 @@ For the purposes of the README we'll set up a crawler to crawl tweets from popul
 
 ### Duplicate the template and customise as required
 
-* $ cp snscrape-template snscrape-tesla
+* $ cp -r snscrape-template snscrape-tesla
 
 ### Switch to the new crawler's directory and rename the shell script.
 
@@ -21,15 +21,16 @@ For the purposes of the README we'll set up a crawler to crawl tweets from popul
 
 ### Edit the shell script with your favourite editor
 
-WHen using multiple crawlers, it's useful to be able to separately filter the results. To do this we use elasticsearch ID tags (ESSID's). These are set in line 7.
+When using multiple crawlers, it's useful to be able to separately filter the results of each crawler individually. To do this we use elasticsearch ID tags (ESSID's). These are set in line 7.
 
 * replace "template" in line 7 with the friendly name of your crawler. EG: crawler="template" = crawler="tesla"
 
 The rest of the variables in this section cover the number of results you want to scrape. The default values below are reasonably conservative prioritizing speed over quantity.
 
-* pick how many tweets to search for with each hashtag, by editing the hashtaglimit on line 10: crawlhashtaglimit="500"
-* pick how many tweets to search for with each searchterm, by editing the searchlimit on line 11: crawlsearchlimit="500"
-* pick how many of a user's tweets to crawl by editing the userlimit on line 12: crawluserlimit="100"
+* pick how many tweets to search for with each hashtag, by editing the hashtaglimit on line 11: crawlhashtaglimit="500"
+* pick how many tweets to search for with each cashtag, by editing the hashtaglimit on line 12: crawlcashtaglimit="500"
+* pick how many tweets to search for with each searchterm, by editing the searchlimit on line 13: crawlsearchlimit="500"
+* pick how many of a user's tweets to crawl by editing the userlimit on line 14: crawluserlimit="100"
 
 ### Run the shell script to create all the listfiles
 
@@ -46,7 +47,7 @@ This will create the following files:
 
 ## Setting up the Crawler:
 
-Each of the text files in the crawler directory are simple lists. You place a variable in a new line and the cawler will iterate through the list sequentially line by line.
+Each of the text files in the crawler directory are lists. You add things you want to search for in separate lines to each list, and the cawler will run through the list sequentially line by line.
 
 ### Userlist - snscrape-tesla/user-tesla.txt
 
@@ -64,17 +65,25 @@ Case insensitive. Make sure the @ symbol is not included and leave an empty line
 
 ### Hashtaglist - snscrape-tesla/hashtag-tesla.txt
 
-We'll add some common hashtags accounts use when discussing Tesla here. Using your favourite text editor open the hashtag file and start adding users each on a new line.
-Case insensitive. Make sure the # symbol is not included and leave an empty line on the end (fix in progress).
+We'll add some common hashtags accounts use when discussing Tesla here. Using your favourite text editor open the hashtag file and start adding hashtags each on a new line.
+Case insensitive. Make sure the # symbol is included and leave an empty line on the end (fix in progress).
 
-* Tesla
-* TeslaSolar
-* teslamodels
-* teslamodel3
-* teslamodelx
-* teslamodely
-* teslasemi
-* cybertruck
+* #Tesla
+* #TeslaSolar
+* #teslamodels
+* #teslamodel3
+* #teslamodelx
+* #teslamodely
+* #teslasemi
+* #cybertruck
+*  
+
+### Cashtaglist - snscrape-tesla/cashtag-tesla.txt
+
+We'll add some common cashtags accounts use when discussing Tesla here. Using your favourite text editor open the cashtag file and start adding cashtags each on a new line.
+Case insensitive. Make sure the $ symbol is included and leave an empty line on the end (fix in progress).
+
+* $TSLA
 *  
 
 ### Searchlist - snscrape-tesla/search-tesla.txt
@@ -89,16 +98,17 @@ Case insensitive. place multi-word terms in quotes and leave an empty line on th
 * "Tesla Semi"
 * "Tesla Cybertruck"
 * cybertruck
-*  
+* supercharger
+* 
 
 ## Running the crawler
 
-Now the crawler can be run. It will iterate through each of the list files running the appropriate SNSCRAPE script against each listfile.
+Now the crawler can run. It will iterate through each of the list files running the appropriate SNSCRAPE script against each listfile.
 
 * cd ..
 * ./snscrape-tesla/snscrape-tesla.sh
 
-The shell may show some warning about elasticsearch authentication methods being deprecated, this is being worked on but doesn't prevent the scripts from running.
+The shell may show some warning about elasticsearch authentication methods being deprecated, this is being worked on but doesn't currently prevent the scripts from running.
 
 Output from the crawl will be sent to the logfile listed above and will show the progross:
 
