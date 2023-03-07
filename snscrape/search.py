@@ -39,6 +39,7 @@ class Twitter_Elasticsearch():
                 "nretweets" : tweet.retweetCount,                       # number of retweets
                 "user_id_str" : tweet.user.id,                          # user id string
                 "username" : tweet.user.username,                       # twitter account username
+                "bio" : tweet.user.renderedDescription,                 # twitter account bio
                 "tweet" : tweet.rawContent,                             # the contents of the tweet
                 "hashtags" : tweet.hashtags,                            # hashtags from the collected tweet
                 "cashtags" : tweet.cashtags,                            # cashtags from the collected tweet

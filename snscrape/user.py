@@ -29,16 +29,15 @@ class Twitter_Elasticsearch():
             tweets = {
                 "_index": 'elasticsearch-indexname',                    # elasticsearch custom index for snscrape
                 "_id": str(tweet.id),                                   # elasticsearch tweet id
+                "essid" : twitessid,                                    # elasticsearch custom tag                
                 "conversation_id": tweet.id,                            # twitter internal tweet id
                 "created_at" : tweet.date,                              # date and time of tweet
-                "essid" : twitessid,                                    # elasticsearch custom tag
                 "link" : tweet.url,                                     # url of the tweet
                 "name" : tweet.user.displayname,                        # friendly account name
                 "nlikes" : tweet.likeCount,                             # number of likes
                 "nreplies" : tweet.replyCount,                          # number of replies
                 "nretweets" : tweet.retweetCount,                       # number of retweets
                 "user_id_str" : tweet.user.id,                          # user id string
-                "user_id_label" : tweet.user.label,                     # user account label
                 "username" : tweet.user.username,                       # twitter account username
                 "bio" : tweet.user.renderedDescription,                 # twitter account bio
                 "tweet" : tweet.rawContent,                             # the contents of the tweet
@@ -46,6 +45,7 @@ class Twitter_Elasticsearch():
                 "cashtags" : tweet.cashtags,                            # cashtags from the collected tweet
                 "place" : tweet.user.location,                          # the stated location of the user account
                 "verified" : tweet.user.verified,                       # verification state of the account
+                "subscribed" : tweet.user.label,                        # subscription (twitter blue) state of the account              
                 "age" : tweet.user.created,                             # creation date of twitter account
 			    "nfollowers": tweet.user.followersCount,                # number of followers
 			    "nfollowing" : tweet.user.friendsCount,                 # number of following
