@@ -2,6 +2,8 @@
 
 A series of python scripts which scrape publicly available metadata from twitter and output to an elasticsearch instance.
 
+These scripts require a working SNSCRAPE installation which is available here: https://github.com/JustAnotherArchivist/snscrape and an ElasticSearch instance accessible from the system running the scripts. Visualization and basic analysis of the scraper results can be done natively in elasticsearch or with Kibana.
+
 ## USER.PY - Usernames
 
 invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG COUNT
