@@ -1,8 +1,8 @@
-## Scraping metadata from tweets and accounts using SNSCRAPE.
+# Scraping metadata from tweets and accounts using SNSCRAPE.
 
 A series of python scripts which scrape publicly available metadata from twitter and output to an elasticsearch instance.
 
-### USER.PY - Usernames
+## USER.PY - Usernames
 
 invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG COUNT
 
@@ -10,7 +10,7 @@ invoked from shell (requires 3 arguments): python3 user.py USERNAME ELASTICTAG C
 
 This would scrape metadata from up to 50,000 of the most recent tweets sent by the account @BBCNews and add the elasticseach tag "broadcasters" to all results.
 
-The Usernames scraper provides metadata for:
+### The Usernames scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
@@ -37,7 +37,7 @@ The Usernames scraper provides metadata for:
 * "bannerurl": profile banner image URL
 * "protected": is account protected
 
-### USERID.PY - UserIDs
+## USERID.PY - UserIDs
 
 invoked from shell (requires 3 arguments): python3 userid.py USERID ELASTICTAG COUNT
 
@@ -45,7 +45,7 @@ invoked from shell (requires 3 arguments): python3 userid.py USERID ELASTICTAG C
 
 This would scrape metadata from up to 750 of the most recent tweets sent by the user_id 252521025 (@Number10cat) and add the elasticseach tag "global-influencers" to all results.
 
-The UserID scraper provides metadata for:
+### The UserID scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
@@ -72,7 +72,7 @@ The UserID scraper provides metadata for:
 * "bannerurl": profile banner image URL
 * "protected": is account protected
 
-### FASTUSER.PY - FastUser
+## FASTUSER.PY - FastUser
 
 invoked from shell (requires 2 arguments): python3 fastuser.py USERNAME ELASTICTAG
 
@@ -80,7 +80,7 @@ invoked from shell (requires 2 arguments): python3 fastuser.py USERNAME ELASTICT
 
 This would scrape limited bio metadata from up to 5 of the most recent tweets sent by the account @Fesshole and add the elasticseach tag "comedy" to all results. Designed to execute rapidly for fast user-bio collection tasks where tweet metadata is less useful than user metadata.
 
-The Fastuser scraper provides metadata for:
+### The Fastuser scraper provides metadata for:
 
 * essid: elasticsearch custom tag
 * name: friendly account name
@@ -96,9 +96,7 @@ The Fastuser scraper provides metadata for:
 * ntweets: number of tweets
 * protected: is account protected
 
-## Crawling Hashtags and Cashtags
-
-### HASHTAG.PY - Hashtags
+## HASHTAG.PY - Hashtags
 
 invoked from shell (requires 3 arguments): python3 hashtag.py HASHTAG ELASTICTAG COUNT
 
@@ -106,7 +104,7 @@ invoked from shell (requires 3 arguments): python3 hashtag.py HASHTAG ELASTICTAG
 
 This would scrape basic metadata from up to 150,000 tweets containing the hashtag #BlackFriday and add the elasticseach tag "blackfriday" to all results.
 
-The Hashtag scraper provides metadata for:
+### The Hashtag scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
@@ -131,7 +129,7 @@ The Hashtag scraper provides metadata for:
 * "ntweets": number of tweets
 * "protected": is account protected
 
-### CASHTAG.PY - Cashtags
+## CASHTAG.PY - Cashtags
 
 invoked from shell (requires 3 arguments): python3 cashtag.py CASHTAG ELASTICTAG COUNT
 
@@ -139,7 +137,7 @@ invoked from shell (requires 3 arguments): python3 cashtag.py CASHTAG ELASTICTAG
 
 This would scrape basic metadata from up to 1000 tweets containing the cashtag $TSLA and add the elasticseach tag "stocks" to all results.
 
-The Cashtag scraper provides metadata for:
+### The Cashtag scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
@@ -164,9 +162,7 @@ The Cashtag scraper provides metadata for:
 * "ntweets": number of tweets
 * "protected": is account protected
 
-## Crawling keywords and phrases from within tweets
-
-### SEARCH.PY - Search
+## SEARCH.PY - Search
 
 invoked from shell (requires 3 arguments): python3 search.py SEARCHTERM ELASTICTAG COUNT
 
@@ -174,7 +170,7 @@ invoked from shell (requires 3 arguments): python3 search.py SEARCHTERM ELASTICT
 
 This would scrape basic metadata from up to 500 tweets containing the words "Christmas Day" posted since December 25th 2022, and add the elasticseach tag "Christmas" to all results.
 
-The Search scraper provides metadata for:
+### The Search scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
@@ -197,7 +193,7 @@ The Search scraper provides metadata for:
 * "nfollowing": number of following
 * "ntweets": number of tweets
 
-### ADVSEARCH.PY - Advanced Search
+## ADVSEARCH.PY - Advanced Search
 
 invoked from shell (requires 3 arguments): python3 advsearch.py SEARCHTERM ELASTICTAG COUNT
 
@@ -205,7 +201,7 @@ invoked from shell (requires 3 arguments): python3 advsearch.py SEARCHTERM ELAST
 
 This would scrape all available metadata from up to 5,000 tweets which contain embedded video, posted since May 6th 2021, and add the elasticseach tag SpaceX to all results.
 
-The Advanced Search scraper provides metadata for:
+### The Advanced Search scraper provides metadata for:
 
 * "essid": elasticsearch custom tag                
 * "conversation_id": twitter internal tweet id
